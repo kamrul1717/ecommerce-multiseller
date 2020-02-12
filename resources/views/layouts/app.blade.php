@@ -46,7 +46,11 @@
                                 <i class="fas fa-cart-arrow-down text-success fa-2x"></i>
                                 <div class="badge badge-danger">
                                     {{-- {{ Cart::session(auth()->id())->getTotalQuantity() }} --}}
-                                    {{ Cart::session(auth()->id())->getContent()->count() }}
+                                    @auth
+                                        {{ Cart::session(auth()->id())->getContent()->count() }}
+                                    @else
+                                        0
+                                    @endauth
                                 </div>
                             </a>
                         </li>
